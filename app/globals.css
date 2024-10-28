@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 217, 202, 179;  /* #D9CAB3 */
+  --background-rgb: 46, 40, 42;     /* #2E282A */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer components {
+  .nav-item {
+    @apply flex flex-col items-center justify-center flex-1 p-2 hover:bg-accent-teal/10 text-primary-text;
+  }
+}
+
+/* Instagram-like transitions */
+@layer utilities {
+  .transition-like {
+    @apply transition-transform duration-200 active:scale-90;
+  }
+}
+
+/* Custom dark mode styles */
+@layer base {
+  a {
+    @apply text-accent-teal hover:text-accent-pink transition-colors;
+  }
+
+  button {
+    @apply bg-accent-red hover:bg-accent-red/90 text-primary-text transition-colors;
+  }
+
+  input, textarea {
+    @apply bg-primary-bg border border-primary-text/20 text-primary-text 
+           focus:border-accent-teal focus:ring-1 focus:ring-accent-teal
+           placeholder:text-primary-text/50;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary-text;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.primary-bg');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.accent-teal');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.accent-pink');
+}
